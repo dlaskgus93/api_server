@@ -1,0 +1,19 @@
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_test_loop_scope = "function"
+
+# 🌟 테스트 실행 시 자동으로 커버리지를 측정하도록 옵션 추가
+# --cov=app: 'app' 폴더를 기준으로 측정해라
+# --cov-report=term-missing: 터미널에 결과를 보여주고, 테스트 안 된 라인 번호도 찍어줘라
+addopts = "--cov=app --cov-report=term-missing"
+
+[tool.coverage.run]
+# 측정에서 제외할 파일들 (예: 테스트 코드 자체는 측정할 필요 없음)
+omit = [
+    "tests/*",
+    "app/main.py", 
+]
+
+[tool.coverage.report]
+# 커버리지가 특정 수치 미만이면 실패로 간주하고 싶을 때 (선택사항)
+# fail_under = 80
